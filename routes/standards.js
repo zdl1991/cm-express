@@ -1,19 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
-const db = require('../db.js')
+const db = require('../db')
 
-/* GET users listing. */
 router.get('/', function (req, res, next) {
 
     db.query('SELECT * From patient', (err, rows, fields) => {
         if (err) throw err
         console.log(rows)
+        res.send(rows)
     })
 
-    res.send('respond with a resource');
 
-    //connection.end()
+    //res.send('respond with a resource');
+   
 });
 
 module.exports = router;
