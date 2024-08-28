@@ -18,7 +18,8 @@ router.get('/', function (req, res, next) {
 });
 router.post('/', function (req, res, next) {
     // res.json(req.body)
-    db.query(`INSERT INTO patient(id,name) VALUES(${uuidv1().replace(/-/g, '')},${req.body.name})`, (err, rows, fields) => {
+    const id = uuidv1().replace(/-/g, '')
+    db.query(`INSERT INTO patient(id,name) VALUES(${id},${req.body.name})`, (err, rows, fields) => {
         if (err) throw err
         console.log(rows)
         res.send(rows)
