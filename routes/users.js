@@ -5,8 +5,8 @@ const db = require('../db.js')
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-
-    db.query('SELECT * From patient', (err, rows, fields) => {
+    const name = 'zdl'
+    db.query(`SELECT * From patient  WHERE name='${name}'`, (err, rows, fields) => {
         if (err) throw err
         console.log(rows)
     })
