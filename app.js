@@ -8,6 +8,12 @@ var db = require('./db') //引入数据库链接
 
 var app = express();
 
+
+//引入路由
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var standards = require('./routes/standards');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -18,16 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//注册路由
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var standards = require('./routes/standards');
 
+//注册路由
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/standards', standards);
-
-
 
 
 // catch 404 and forward to error handler
